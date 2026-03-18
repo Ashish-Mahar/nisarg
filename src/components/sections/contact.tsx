@@ -20,7 +20,7 @@ export function Contact() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // Using FormSubmit AJAX endpoint
+      // FormSubmit AJAX call
       const response = await fetch("https://formsubmit.co/ajax/ashishmahar.in@gmail.com", {
         method: "POST",
         headers: { 
