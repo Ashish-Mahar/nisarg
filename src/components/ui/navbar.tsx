@@ -65,13 +65,25 @@ export function Navbar({ isMuted = true, onToggleMute }: NavbarProps) {
           </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="flex md:hidden items-center gap-4">
+        {/* Mobile Toggle & Sound Button */}
+        <div className="flex md:hidden items-center gap-3">
+          <button 
+            onClick={onToggleMute}
+            className="p-2 rounded-full border border-white/10 bg-white/5 transition-all"
+            title={isMuted ? "Unmute" : "Mute"}
+          >
+            {isMuted ? (
+              <VolumeX className="w-5 h-5 text-white/70" />
+            ) : (
+              <Volume2 className="w-5 h-5 text-accent animate-pulse" />
+            )}
+          </button>
+          
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white"
+            className="p-2 text-white"
           >
-            {mobileMenuOpen ? <X /> : <Menu />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
@@ -90,16 +102,6 @@ export function Navbar({ isMuted = true, onToggleMute }: NavbarProps) {
                 {link.name}
               </a>
             ))}
-            <button 
-              onClick={() => {
-                onToggleMute?.();
-                setMobileMenuOpen(false);
-              }}
-              className="flex items-center gap-2 text-lg font-headline font-medium text-white/90"
-            >
-              {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5 text-accent" />}
-              {isMuted ? "Turn Sound On" : "Turn Sound Off"}
-            </button>
           </div>
         </div>
       )}
