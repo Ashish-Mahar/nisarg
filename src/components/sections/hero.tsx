@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -17,15 +18,15 @@ export function Hero() {
           muted
           loop
           playsInline
-          poster={heroImage?.imageUrl || ""}
+          poster={heroImage?.imageUrl || "/hero-poster.jpg"}
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
-          {/* Put your video file in the 'public' folder and rename it to 'hero-video.mp4' */}
-          <source src="/hero-video.mp4" type="video/mp4" />
+          {/* Using the provided video file from the public folder */}
+          <source src="/nis.mp4" type="video/mp4" />
           
           {/* Fallback to image if video fails or isn't present yet */}
           <Image
-            src={heroImage?.imageUrl || "https://picsum.photos/seed/dance1/1920/1080"}
+            src={heroImage?.imageUrl || "/hero-poster.jpg"}
             alt={heroImage?.description || "Hero Background"}
             fill
             className="object-cover opacity-60"
