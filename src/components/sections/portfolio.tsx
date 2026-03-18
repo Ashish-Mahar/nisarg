@@ -9,28 +9,36 @@ export function Portfolio() {
   // Link: https://www.instagram.com/reel/ABCDEFG123/ -> ID: ABCDEFG123
   const performanceReels = [
     {
-      title: "Latest Performance",
-      reelId: "DV5ZHuGAlU6", 
-      tag: "New",
+      title: "Viral Performance",
+      reelId: "DOn_tGBjape",
+      tag: "Famous",
       color: "text-accent",
       glow: "neon-glow-cyan"
     },
     {
-      title: "Hip Hop Freestyle",
-      reelId: "DT26LfngWW3",
-      tag: "Street Style",
+      title: "Garbha Freestyle",
+      reelId: "DQ9V-95j62l",
+      tag: "Gujarati Style",
       color: "text-primary",
       glow: "neon-glow-purple"
     },
     {
       title: "Bollywood Fusion",
-      reelId: "DB9_L_PskV8",
+      reelId: "DV5ZHuGAlU6",
       tag: "Commercial",
+      color: "text-accent",
+      glow: "neon-glow-cyan"
+    },
+    {
+      title: "Loved one",
+      reelId: "DVVPMuIgsys",
+      tag: "Promotional",
       color: "text-accent",
       glow: "neon-glow-cyan"
     }
   ];
 
+// https://www.instagram.com/reel/DOn_tGBjape/?utm_source=ig_web_copy_link
   const otherVentures = [
     {
       title: "Kari Kraft",

@@ -5,23 +5,49 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Instagram, Send, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Send, Mail, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export function Contact() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: "Message Sent!",
-        description: "I'll get back to you as soon as possible.",
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // Using FormSubmit AJAX endpoint
+      const response = await fetch("https://formsubmit.co/ajax/ashishmahar.in@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
       });
-    }, 1500);
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "I'll get back to you as soon as possible via email.",
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error("Failed to send");
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "Could not send your message. Please try again later.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -75,47 +101,51 @@ export function Contact() {
         <div className="glass p-8 rounded-2xl border border-white/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[100px]" />
           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+            {/* FormSubmit Configuration */}
+            <input type="hidden" name="_subject" value="New Inquiry from Portfolio!" />
+            <input type="hidden" name="_template" value="table" />
+            
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white/70">Full Name</label>
                 <Input
+                  name="name"
                   required
                   placeholder="John Doe"
-                  className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
+                  className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-white/70">Phone Number</label>
                 <Input
+                  name="phone"
                   required
                   type="tel"
                   placeholder="9876543210"
-                  pattern="[0-9]*"
-                  inputMode="numeric"
-                  onChange={(e) => {
-                    e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
-                  }}
-                  className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
+                  className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all"
                 />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-white/70">Subject</label>
               <Input
+                name="subject"
                 required
                 placeholder="Collaboration Inquiry"
-                className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
+                className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all"
               />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-white/70">Your Message</label>
               <Textarea
+                name="message"
                 required
                 placeholder="Tell me about your project..."
-                className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white min-h-[150px] resize-none transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
+                className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white min-h-[150px] resize-none transition-all"
               />
             </div>
             <Button
+              type="submit"
               disabled={loading}
               className="w-full h-14 bg-accent hover:bg-accent/90 text-background font-headline font-bold text-lg neon-glow-cyan transition-all"
             >
