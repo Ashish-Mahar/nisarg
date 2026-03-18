@@ -3,11 +3,38 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Play, Shirt, School, Instagram, ExternalLink } from "lucide-react";
+import { Play, Shirt, School, Instagram, ExternalLink, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Portfolio() {
   const portfolioItems = PlaceHolderImages.filter((img) => img.id.startsWith("portfolio"));
+
+  const performanceReels = [
+    {
+      title: "Hip Hop Freestyle",
+      videoUrl: "/reel1.mp4", // Put your video file in public/reel1.mp4
+      thumbnail: "https://picsum.photos/seed/reel1/600/400",
+      tag: "Street Style",
+      color: "text-accent",
+      glow: "neon-glow-cyan"
+    },
+    {
+      title: "Bollywood Fusion",
+      videoUrl: "/reel2.mp4", // Put your video file in public/reel2.mp4
+      thumbnail: "https://picsum.photos/seed/reel2/600/400",
+      tag: "Commercial",
+      color: "text-primary",
+      glow: "neon-glow-purple"
+    },
+    {
+      title: "Choreography Reel",
+      videoUrl: "/reel3.mp4", // Put your video file in public/reel3.mp4
+      thumbnail: "https://picsum.photos/seed/reel3/600/400",
+      tag: "Masterclass",
+      color: "text-accent",
+      glow: "neon-glow-cyan"
+    }
+  ];
 
   const otherVentures = [
     {
@@ -36,52 +63,72 @@ export function Portfolio() {
         {/* Header */}
         <div className="text-center space-y-4">
           <h2 className="text-4xl md:text-5xl font-headline font-bold text-white">
-            Portfolio <span className="text-primary text-glow-purple">Gallery</span>
+            Work <span className="text-primary text-glow-purple">Showcase</span>
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto">
-            A glimpse into the rhythm, movements, and entrepreneurial spirit that define my professional journey.
+            From explosive stage performances to creative entrepreneurship, here is a glimpse of my journey.
           </p>
         </div>
 
         {/* Video Highlights Grid */}
         <div className="space-y-8">
-          <h3 className="text-2xl font-headline font-bold text-white/90 px-2">Performance Reels</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="relative group aspect-video rounded-xl overflow-hidden border border-white/10 bg-card flex items-center justify-center">
-              <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-              <Play className="w-12 h-12 text-accent group-hover:scale-110 transition-transform z-20" />
-              <div className="absolute bottom-4 left-4 z-20">
-                <span className="text-white font-headline text-sm font-bold bg-black/50 px-3 py-1 rounded-full">
-                  Hip Hop Freestyle
-                </span>
-              </div>
-            </div>
-
-            <div className="relative group aspect-video rounded-xl overflow-hidden border border-white/10 bg-card flex items-center justify-center">
-              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-              <Play className="w-12 h-12 text-primary group-hover:scale-110 transition-transform z-20" />
-              <div className="absolute bottom-4 left-4 z-20">
-                <span className="text-white font-headline text-sm font-bold bg-black/50 px-3 py-1 rounded-full">
-                  Bollywood Fusion
-                </span>
-              </div>
-            </div>
-
-            <div className="relative group aspect-video rounded-xl overflow-hidden border border-white/10 bg-card flex items-center justify-center">
-              <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-              <Play className="w-12 h-12 text-accent group-hover:scale-110 transition-transform z-20" />
-              <div className="absolute bottom-4 left-4 z-20">
-                <span className="text-white font-headline text-sm font-bold bg-black/50 px-3 py-1 rounded-full">
-                  Choreography Reel
-                </span>
-              </div>
-            </div>
+          <div className="flex items-center gap-3 px-2">
+            <Film className="w-6 h-6 text-accent" />
+            <h3 className="text-2xl font-headline font-bold text-white/90">Performance Reels</h3>
           </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {performanceReels.map((reel, idx) => (
+              <div 
+                key={idx} 
+                className="relative group aspect-video rounded-xl overflow-hidden border border-white/10 bg-card hover:border-white/20 transition-all duration-500 shadow-2xl"
+              >
+                {/* Background Video (Muted/Loop) */}
+                <video
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+                  poster={reel.thumbnail}
+                  onMouseOver={(e) => e.currentTarget.play()}
+                  onMouseOut={(e) => {
+                    e.currentTarget.pause();
+                    e.currentTarget.currentTime = 0;
+                  }}
+                >
+                  <source src={reel.videoUrl} type="video/mp4" />
+                </video>
+
+                {/* Overlay Content */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  <div className="space-y-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <span className={`text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded bg-white/10 border border-white/10 ${reel.color}`}>
+                      {reel.tag}
+                    </span>
+                    <h4 className="text-xl font-headline font-bold text-white group-hover:text-accent transition-colors">
+                      {reel.title}
+                    </h4>
+                  </div>
+                  
+                  {/* Play Button Icon */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className={`p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 ${reel.glow}`}>
+                      <Play className={`w-8 h-8 fill-current ${reel.color}`} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-white/30 text-xs italic pt-4">
+            Hover over a reel to preview the action
+          </p>
         </div>
 
         {/* Other Ventures Section */}
         <div className="space-y-8">
-          <h3 className="text-2xl font-headline font-bold text-white/90 px-2">Beyond the Stage</h3>
+          <h3 className="text-2xl font-headline font-bold text-white/90 px-2 flex items-center gap-3">
+            <div className="w-8 h-[2px] bg-primary" /> Beyond the Stage
+          </h3>
           <div className="grid md:grid-cols-2 gap-8">
             {otherVentures.map((venture, idx) => (
               <div
@@ -97,7 +144,7 @@ export function Portfolio() {
                     <p className="text-white/60 leading-relaxed">{venture.description}</p>
                     <Button 
                       variant="outline" 
-                      className={`rounded-full px-6 border-white/10 hover:border-${venture.glow === 'neon-glow-cyan' ? 'accent' : 'primary'} text-white/80 hover:text-white transition-all`}
+                      className={`rounded-full px-6 border-white/10 hover:border-current text-white/80 hover:text-white transition-all`}
                     >
                       {venture.actionLabel} {venture.actionIcon}
                     </Button>
@@ -108,7 +155,7 @@ export function Portfolio() {
           </div>
         </div>
 
-        {/* Image Grid */}
+        {/* Action Gallery */}
         <div className="space-y-8">
           <h3 className="text-2xl font-headline font-bold text-white/90 px-2">Action Gallery</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
