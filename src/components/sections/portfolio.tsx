@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Play, Shirt, School, Instagram, ExternalLink, Film } from "lucide-react";
+import { Shirt, School, Instagram, ExternalLink, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Portfolio() {
@@ -12,24 +12,21 @@ export function Portfolio() {
   const performanceReels = [
     {
       title: "Hip Hop Freestyle",
-      videoUrl: "/reel1.mp4", // Put your video file in public/reel1.mp4
-      thumbnail: "https://picsum.photos/seed/reel1/600/400",
+      reelId: "DT26LfngWW3", // Aapka diya hua link ID
       tag: "Street Style",
       color: "text-accent",
       glow: "neon-glow-cyan"
     },
     {
       title: "Bollywood Fusion",
-      videoUrl: "/reel2.mp4", // Put your video file in public/reel2.mp4
-      thumbnail: "https://picsum.photos/seed/reel2/600/400",
+      reelId: "DB9_L_PskV8", // Placeholder ID (Aap badal sakte hain)
       tag: "Commercial",
       color: "text-primary",
       glow: "neon-glow-purple"
     },
     {
       title: "Choreography Reel",
-      videoUrl: "/reel3.mp4", // Put your video file in public/reel3.mp4
-      thumbnail: "https://picsum.photos/seed/reel3/600/400",
+      reelId: "DB7M-7pv-7V", // Placeholder ID (Aap badal sakte hain)
       tag: "Masterclass",
       color: "text-accent",
       glow: "neon-glow-cyan"
@@ -70,7 +67,7 @@ export function Portfolio() {
           </p>
         </div>
 
-        {/* Video Highlights Grid */}
+        {/* Instagram Reels Grid */}
         <div className="space-y-8">
           <div className="flex items-center gap-3 px-2">
             <Film className="w-6 h-6 text-accent" />
@@ -80,47 +77,35 @@ export function Portfolio() {
             {performanceReels.map((reel, idx) => (
               <div 
                 key={idx} 
-                className="relative group aspect-video rounded-xl overflow-hidden border border-white/10 bg-card hover:border-white/20 transition-all duration-500 shadow-2xl"
+                className="relative group rounded-xl overflow-hidden border border-white/10 bg-card hover:border-white/20 transition-all duration-500 shadow-2xl flex flex-col"
               >
-                {/* Background Video (Muted/Loop) */}
-                <video
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500"
-                  poster={reel.thumbnail}
-                  onMouseOver={(e) => e.currentTarget.play()}
-                  onMouseOut={(e) => {
-                    e.currentTarget.pause();
-                    e.currentTarget.currentTime = 0;
-                  }}
-                >
-                  <source src={reel.videoUrl} type="video/mp4" />
-                </video>
+                {/* Instagram Embed Wrapper */}
+                <div className="aspect-[9/16] w-full bg-black/40 relative">
+                  <iframe
+                    src={`https://www.instagram.com/reel/${reel.reelId}/embed`}
+                    className="absolute inset-0 w-full h-full"
+                    frameBorder="0"
+                    scrolling="no"
+                    allowTransparency={true}
+                  ></iframe>
+                </div>
 
-                {/* Overlay Content */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
-                  <div className="space-y-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <span className={`text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded bg-white/10 border border-white/10 ${reel.color}`}>
+                {/* Info Overlay (Visible on Hover/Bottom) */}
+                <div className="p-4 bg-card/80 backdrop-blur-sm border-t border-white/5">
+                  <div className="flex justify-between items-center">
+                    <span className={`text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded bg-white/5 border border-white/10 ${reel.color}`}>
                       {reel.tag}
                     </span>
-                    <h4 className="text-xl font-headline font-bold text-white group-hover:text-accent transition-colors">
+                    <h4 className="text-sm font-headline font-bold text-white">
                       {reel.title}
                     </h4>
-                  </div>
-                  
-                  {/* Play Button Icon */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className={`p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 ${reel.glow}`}>
-                      <Play className={`w-8 h-8 fill-current ${reel.color}`} />
-                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
           <p className="text-center text-white/30 text-xs italic pt-4">
-            Hover over a reel to preview the action
+            Directly synced from Instagram
           </p>
         </div>
 
