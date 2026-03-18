@@ -3,9 +3,14 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Music, Menu, X } from "lucide-react";
+import { Volume2, VolumeX, Menu, X } from "lucide-react";
 
-export function Navbar() {
+interface NavbarProps {
+  isMuted?: boolean;
+  onToggleMute?: () => void;
+}
+
+export function Navbar({ isMuted = true, onToggleMute }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -47,8 +52,16 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <button className="p-2 rounded-full border border-white/10 hover:border-accent/50 transition-all group">
-            <Music className="w-5 h-5 text-white/70 group-hover:text-accent" />
+          <button 
+            onClick={onToggleMute}
+            className="p-2 rounded-full border border-white/10 hover:border-accent/50 transition-all group"
+            title={isMuted ? "Unmute Video" : "Mute Video"}
+          >
+            {isMuted ? (
+              <VolumeX className="w-5 h-5 text-white/70 group-hover:text-accent" />
+            ) : (
+              <Volume2 className="w-5 h-5 text-accent animate-pulse" />
+            )}
           </button>
         </div>
 
@@ -77,6 +90,16 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
+            <button 
+              onClick={() => {
+                onToggleMute?.();
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-2 text-lg font-headline font-medium text-white/90"
+            >
+              {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5 text-accent" />}
+              {isMuted ? "Turn Sound On" : "Turn Sound Off"}
+            </button>
           </div>
         </div>
       )}

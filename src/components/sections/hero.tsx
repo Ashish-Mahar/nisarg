@@ -6,25 +6,28 @@ import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ChevronDown } from "lucide-react";
 
-export function Hero() {
+interface HeroProps {
+  isMuted?: boolean;
+}
+
+export function Hero({ isMuted = true }: HeroProps) {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-bg");
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Video or Image with Overlay */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
-          muted
+          muted={isMuted}
           loop
           playsInline
           poster={heroImage?.imageUrl || "/hero-poster.jpg"}
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
-          {/* Using the provided video file from the public folder */}
           <source src="/nis.mp4" type="video/mp4" />
           
-          {/* Fallback to image if video fails or isn't present yet */}
+          {/* Fallback to image if video fails or isn't present */}
           <Image
             src={heroImage?.imageUrl || "/hero-poster.jpg"}
             alt={heroImage?.description || "Hero Background"}
