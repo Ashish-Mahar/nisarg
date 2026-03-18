@@ -11,16 +11,27 @@ export function Hero() {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Video or Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src={heroImage?.imageUrl || ""}
-          alt={heroImage?.description || "Hero Background"}
-          fill
-          className="object-cover opacity-60"
-          priority
-          data-ai-hint={heroImage?.imageHint}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={heroImage?.imageUrl || ""}
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+        >
+          {/* Replace this URL with your direct Instagram video MP4 link or any hosting link */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-dancer-performing-on-stage-with-lights-4017-large.mp4" type="video/mp4" />
+          <Image
+            src={heroImage?.imageUrl || ""}
+            alt={heroImage?.description || "Hero Background"}
+            fill
+            className="object-cover opacity-60"
+            priority
+            data-ai-hint={heroImage?.imageHint}
+          />
+        </video>
         <div className="absolute inset-0 bg-hero-pattern" />
       </div>
 
