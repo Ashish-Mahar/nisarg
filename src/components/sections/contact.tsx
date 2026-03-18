@@ -54,7 +54,7 @@ export function Contact() {
               </div>
               <div>
                 <p className="text-xs text-white/40 uppercase font-bold tracking-widest">Follow Me</p>
-                <a href="https://instagram.com" target="_blank" className="text-lg font-medium hover:text-accent transition-colors">@nisarg_sindhe</a>
+                <a href="https://www.instagram.com/nisarg___22/" target="_blank" className="text-lg font-medium hover:text-accent transition-colors">@nisarg___22</a>
               </div>
             </div>
 
@@ -93,7 +93,7 @@ export function Contact() {
                   pattern="[0-9]*"
                   inputMode="numeric"
                   onChange={(e) => {
-                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                    e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
                   }}
                   className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
                 />
