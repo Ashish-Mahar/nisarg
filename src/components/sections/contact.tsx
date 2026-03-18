@@ -111,8 +111,8 @@ export function Contact() {
                 <Input
                   name="name"
                   required
-                  placeholder="John Doe"
-                  className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all"
+                  placeholder="Your Name here"
+                  className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all focus:placeholder:text-transparent"
                 />
               </div>
               <div className="space-y-2">
@@ -121,8 +121,8 @@ export function Contact() {
                   name="phone"
                   required
                   type="tel"
-                  placeholder="9876543210"
-                  className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all"
+                  placeholder="Ex.. 12345"
+                  className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all focus:placeholder:text-transparent"
                 />
               </div>
             </div>
@@ -132,7 +132,7 @@ export function Contact() {
                 name="subject"
                 required
                 placeholder="Collaboration Inquiry"
-                className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all"
+                className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all focus:placeholder:text-transparent"
               />
             </div>
             <div className="space-y-2">
@@ -141,7 +141,7 @@ export function Contact() {
                 name="message"
                 required
                 placeholder="Tell me about your project..."
-                className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white min-h-[150px] resize-none transition-all"
+                className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white min-h-[150px] resize-none transition-all focus:placeholder:text-transparent"
               />
             </div>
             <Button
