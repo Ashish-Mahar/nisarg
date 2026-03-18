@@ -83,11 +83,16 @@ export function Contact() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-white/70">Email Address</label>
+                <label className="text-sm font-medium text-white/70">Phone Number</label>
                 <Input
                   required
-                  type="email"
-                  placeholder="john@example.com"
+                  type="tel"
+                  placeholder="9876543210"
+                  pattern="[0-9]*"
+                  inputMode="numeric"
+                  onChange={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                  }}
                   className="bg-white/5 border-white/10 focus:border-accent focus:ring-accent text-white h-12"
                 />
               </div>
