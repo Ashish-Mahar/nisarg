@@ -15,7 +15,7 @@ export function About() {
           <div className="absolute -inset-4 bg-primary/20 rounded-2xl blur-2xl transition-all group-hover:bg-primary/30" />
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
             <Image
-              src={aboutImage?.imageUrl || "https://picsum.photos/seed/dance-about-signature/800/1000"}
+              src={aboutImage?.imageUrl || "/nisarg.png"}
               alt={aboutImage?.description || "About Nisarg"}
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
