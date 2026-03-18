@@ -22,7 +22,7 @@ export function Hero() {
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
           {/* Replace this URL with your direct Instagram video MP4 link or any hosting link */}
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-dancer-performing-on-stage-with-lights-4017-large.mp4" type="video/mp4" />
+          <source src="https://www.instagram.com/reel/DT26LfngWW3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" type="video/mp4" />
           <Image
             src={heroImage?.imageUrl || ""}
             alt={heroImage?.description || "Hero Background"}
