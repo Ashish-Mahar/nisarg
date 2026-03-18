@@ -5,10 +5,12 @@ import { Shirt, School, Instagram, ExternalLink, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Portfolio() {
+  // BHAI YAHAN APNI REEL KI ID BADLO:
+  // Link: https://www.instagram.com/reel/ABCDEFG123/ -> ID: ABCDEFG123
   const performanceReels = [
     {
       title: "Latest Performance",
-      reelId: "DV5ZHuGAlU6",
+      reelId: "DV5ZHuGAlU6", 
       tag: "New",
       color: "text-accent",
       glow: "neon-glow-cyan"
@@ -101,9 +103,6 @@ export function Portfolio() {
               </div>
             ))}
           </div>
-          <p className="text-center text-white/30 text-[10px] italic pt-4">
-            * Direct Instagram integration
-          </p>
         </div>
 
         {/* Other Ventures Section */}
