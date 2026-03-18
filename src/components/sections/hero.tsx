@@ -21,8 +21,9 @@ export function Hero() {
           poster={heroImage?.imageUrl || ""}
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
-          {/* Replace this URL with your direct Instagram video MP4 link or any hosting link */}
-          <source src="https://www.instagram.com/reel/DT26LfngWW3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" type="video/mp4" />
+          {/* Note: Standard Instagram links don't work directly here. You need a direct .mp4 URL. */}
+          {/* Using a high-quality dance stock video for immediate visual impact. */}
+          <source src="https://cdn.pixabay.com/video/2021/04/12/70875-537443187_large.mp4" type="video/mp4" />
           <Image
             src={heroImage?.imageUrl || ""}
             alt={heroImage?.description || "Hero Background"}
