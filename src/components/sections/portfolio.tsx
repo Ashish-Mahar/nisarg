@@ -86,7 +86,7 @@ export function Portfolio() {
                     className="absolute inset-0 w-full h-full"
                     frameBorder="0"
                     scrolling="no"
-                    allowTransparency={true}
+                    allowtransparency="true"
                   ></iframe>
                 </div>
 
