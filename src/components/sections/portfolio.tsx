@@ -35,7 +35,7 @@ export function Portfolio() {
 
   const otherVentures = [
     {
-      title: "Fashion Label",
+      title: "Kari Kraft",
       description: "Founder & Creative Director of a premier fashion brand, blending urban style with high-end aesthetics.",
       icon: <Shirt className="w-10 h-10 text-accent" />,
       actionLabel: "Follow on Instagram",
@@ -45,12 +45,12 @@ export function Portfolio() {
       borderColor: "border-accent/20"
     },
     {
-      title: "Private Educational Institute",
+      title: "Nair International School",
       description: "Founder of a distinguished private school dedicated to excellence in academics and performing arts.",
       icon: <School className="w-10 h-10 text-primary" />,
-      actionLabel: "Visit School Website",
+      actionLabel: "Visit Instagram Page",
       actionIcon: <ExternalLink className="w-4 h-4 ml-2" />,
-      href: "#",
+      href: "https://www.instagram.com/ajithanaireducationaltrust?igsh=MTAwaGV2ZDlsdTFwNw==",
       glow: "neon-glow-purple",
       borderColor: "border-primary/20"
     }
@@ -85,10 +85,8 @@ export function Portfolio() {
                 <div className="aspect-[9/16] w-full bg-black/40 relative">
                   <iframe
                     src={`https://www.instagram.com/reel/${reel.reelId}/embed`}
-                    className="absolute inset-0 w-full h-full"
-                    frameBorder="0"
-                    scrolling="no"
-                    allowtransparency="true"
+                    className="absolute inset-0 w-full h-full border-none"
+                    title={reel.title}
                   ></iframe>
                 </div>
 
