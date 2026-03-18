@@ -60,7 +60,9 @@ export function Contact() {
 
             <div className="flex items-center gap-4 text-white/80 group">
               <div className="p-3 rounded-full bg-white/5 border border-white/10 group-hover:border-primary transition-colors">
-                <MapPin className="w-6 h-6 text-primary" />
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-primary" />
+                </div>
               </div>
               <div>
                 <p className="text-xs text-white/40 uppercase font-bold tracking-widest">Location</p>
@@ -79,7 +81,7 @@ export function Contact() {
                 <Input
                   required
                   placeholder="John Doe"
-                  className="bg-white/5 border-white/10 focus:border-primary focus:ring-primary text-white h-12"
+                  className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
                 />
               </div>
               <div className="space-y-2">
@@ -93,7 +95,7 @@ export function Contact() {
                   onChange={(e) => {
                     e.target.value = e.target.value.replace(/[^0-9]/g, '');
                   }}
-                  className="bg-white/5 border-white/10 focus:border-accent focus:ring-accent text-white h-12"
+                  className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
                 />
               </div>
             </div>
@@ -102,7 +104,7 @@ export function Contact() {
               <Input
                 required
                 placeholder="Collaboration Inquiry"
-                className="bg-white/5 border-white/10 focus:border-primary focus:ring-primary text-white h-12"
+                className="bg-white/5 border-white/10 focus:border-primary focus:ring-0 focus-visible:ring-0 text-white h-12 transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
               />
             </div>
             <div className="space-y-2">
@@ -110,7 +112,7 @@ export function Contact() {
               <Textarea
                 required
                 placeholder="Tell me about your project..."
-                className="bg-white/5 border-white/10 focus:border-accent focus:ring-accent text-white min-h-[150px] resize-none"
+                className="bg-white/5 border-white/10 focus:border-accent focus:ring-0 focus-visible:ring-0 text-white min-h-[150px] resize-none transition-all placeholder:transition-opacity focus:placeholder:opacity-0"
               />
             </div>
             <Button
