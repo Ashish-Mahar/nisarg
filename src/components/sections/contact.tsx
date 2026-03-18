@@ -1,0 +1,130 @@
+
+"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Instagram, Send, Mail, MapPin, Phone } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
+export function Contact() {
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      toast({
+        title: "Message Sent!",
+        description: "I'll get back to you as soon as possible.",
+      });
+    }, 1500);
+  };
+
+  return (
+    <section id="contact" className="py-24 px-6 bg-background relative">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
+        <div className="space-y-12">
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-5xl font-headline font-bold text-white">
+              Let's <span className="text-accent text-glow-cyan">Collaborate</span>
+            </h2>
+            <p className="text-white/60 text-lg max-w-md leading-relaxed">
+              Have a project in mind or want to book a workshop? Reach out and let's make something amazing together.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <div className="flex items-center gap-4 text-white/80 group">
+              <div className="p-3 rounded-full bg-white/5 border border-white/10 group-hover:border-primary transition-colors">
+                <Mail className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-white/40 uppercase font-bold tracking-widest">Email Me</p>
+                <p className="text-lg font-medium">contact@nisargsindhe.com</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 text-white/80 group">
+              <div className="p-3 rounded-full bg-white/5 border border-white/10 group-hover:border-accent transition-colors">
+                <Instagram className="w-6 h-6 text-accent" />
+              </div>
+              <div>
+                <p className="text-xs text-white/40 uppercase font-bold tracking-widest">Follow Me</p>
+                <a href="https://instagram.com" target="_blank" className="text-lg font-medium hover:text-accent transition-colors">@nisarg_sindhe</a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 text-white/80 group">
+              <div className="p-3 rounded-full bg-white/5 border border-white/10 group-hover:border-primary transition-colors">
+                <MapPin className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-white/40 uppercase font-bold tracking-widest">Location</p>
+                <p className="text-lg font-medium">Mumbai, India</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="glass p-8 rounded-2xl border border-white/10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[100px]" />
+          <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white/70">Full Name</label>
+                <Input
+                  required
+                  placeholder="John Doe"
+                  className="bg-white/5 border-white/10 focus:border-primary focus:ring-primary text-white h-12"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-white/70">Email Address</label>
+                <Input
+                  required
+                  type="email"
+                  placeholder="john@example.com"
+                  className="bg-white/5 border-white/10 focus:border-accent focus:ring-accent text-white h-12"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-white/70">Subject</label>
+              <Input
+                required
+                placeholder="Collaboration Inquiry"
+                className="bg-white/5 border-white/10 focus:border-primary focus:ring-primary text-white h-12"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-white/70">Your Message</label>
+              <Textarea
+                required
+                placeholder="Tell me about your project..."
+                className="bg-white/5 border-white/10 focus:border-accent focus:ring-accent text-white min-h-[150px] resize-none"
+              />
+            </div>
+            <Button
+              disabled={loading}
+              className="w-full h-14 bg-accent hover:bg-accent/90 text-background font-headline font-bold text-lg neon-glow-cyan transition-all"
+            >
+              {loading ? "Sending..." : (
+                <>
+                  Send Message <Send className="ml-2 w-5 h-5" />
+                </>
+              )}
+            </Button>
+          </form>
+        </div>
+      </div>
+
+      <footer className="mt-24 pt-8 border-t border-white/5 text-center text-white/30 text-sm">
+        <p>&copy; {new Date().getFullYear()} Nisarg Sindhe. All rights reserved.</p>
+      </footer>
+    </section>
+  );
+}
