@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -21,11 +20,12 @@ export function Hero() {
           poster={heroImage?.imageUrl || ""}
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
-          {/* Note: Standard Instagram links don't work directly here. You need a direct .mp4 URL. */}
-          {/* Using a high-quality dance stock video for immediate visual impact. */}
-          <source src="https://cdn.pixabay.com/video/2021/04/12/70875-537443187_large.mp4" type="video/mp4" />
+          {/* Put your video file in the 'public' folder and rename it to 'hero-video.mp4' */}
+          <source src="/hero-video.mp4" type="video/mp4" />
+          
+          {/* Fallback to image if video fails or isn't present yet */}
           <Image
-            src={heroImage?.imageUrl || ""}
+            src={heroImage?.imageUrl || "https://picsum.photos/seed/dance1/1920/1080"}
             alt={heroImage?.description || "Hero Background"}
             fill
             className="object-cover opacity-60"

@@ -3,13 +3,13 @@
     {
       "id": "hero-bg",
       "description": "Professional dancer in a dramatic silhouette pose",
-      "imageUrl": "https://picsum.photos/seed/dance1/1920/1080",
+      "imageUrl": "/hero-poster.jpg",
       "imageHint": "dancer performance"
     },
     {
       "id": "about-img",
       "description": "Nisarg Sindhe performing a signature contemporary dance move",
-      "imageUrl": "https://picsum.photos/seed/dance-about-signature/800/1000",
+      "imageUrl": "/about-me.jpg",
       "imageHint": "contemporary dancer"
     },
     {
