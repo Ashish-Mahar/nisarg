@@ -1,14 +1,10 @@
 
 "use client";
 
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Shirt, School, Instagram, ExternalLink, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Portfolio() {
-  const portfolioItems = PlaceHolderImages.filter((img) => img.id.startsWith("portfolio"));
-
   const performanceReels = [
     {
       title: "Hip Hop Freestyle",
@@ -40,7 +36,7 @@ export function Portfolio() {
       icon: <Shirt className="w-10 h-10 text-accent" />,
       actionLabel: "Follow on Instagram",
       actionIcon: <Instagram className="w-4 h-4 ml-2" />,
-      href: "https://www.instagram.com/kari_kraft_official?igsh=MWt2c3NsZ2Z2eGc0cw==",
+      href: "https://www.instagram.com/kari_kraft_official?igsh=MzRlODBiNWFlZA==",
       glow: "neon-glow-cyan",
       borderColor: "border-accent/20"
     },
@@ -137,30 +133,6 @@ export function Portfolio() {
                       </a>
                     </Button>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Action Gallery */}
-        <div className="space-y-8">
-          <h3 className="text-2xl font-headline font-bold text-white/90 px-2">Action Gallery</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolioItems.map((item, idx) => (
-              <div
-                key={item.id}
-                className="relative aspect-square rounded-xl overflow-hidden border border-white/10 group cursor-pointer"
-              >
-                <Image
-                  src={item.imageUrl}
-                  alt={item.description}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  data-ai-hint={item.imageHint}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                  <p className="text-white text-sm font-medium">{item.description}</p>
                 </div>
               </div>
             ))}
