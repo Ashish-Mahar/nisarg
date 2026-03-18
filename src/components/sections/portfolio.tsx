@@ -12,21 +12,21 @@ export function Portfolio() {
   const performanceReels = [
     {
       title: "Hip Hop Freestyle",
-      reelId: "DT26LfngWW3", // Aapka diya hua link ID
+      reelId: "DT26LfngWW3",
       tag: "Street Style",
       color: "text-accent",
       glow: "neon-glow-cyan"
     },
     {
       title: "Bollywood Fusion",
-      reelId: "DB9_L_PskV8", // Placeholder ID (Aap badal sakte hain)
+      reelId: "DB9_L_PskV8",
       tag: "Commercial",
       color: "text-primary",
       glow: "neon-glow-purple"
     },
     {
       title: "Choreography Reel",
-      reelId: "DB7M-7pv-7V", // Placeholder ID (Aap badal sakte hain)
+      reelId: "DB7M-7pv-7V",
       tag: "Masterclass",
       color: "text-accent",
       glow: "neon-glow-cyan"
@@ -40,6 +40,7 @@ export function Portfolio() {
       icon: <Shirt className="w-10 h-10 text-accent" />,
       actionLabel: "Follow on Instagram",
       actionIcon: <Instagram className="w-4 h-4 ml-2" />,
+      href: "https://www.instagram.com/kari_kraft_official?igsh=MWt2c3NsZ2Z2eGc0cw==",
       glow: "neon-glow-cyan",
       borderColor: "border-accent/20"
     },
@@ -49,6 +50,7 @@ export function Portfolio() {
       icon: <School className="w-10 h-10 text-primary" />,
       actionLabel: "Visit School Website",
       actionIcon: <ExternalLink className="w-4 h-4 ml-2" />,
+      href: "#",
       glow: "neon-glow-purple",
       borderColor: "border-primary/20"
     }
@@ -128,10 +130,13 @@ export function Portfolio() {
                     <h4 className="text-2xl font-headline font-bold text-white">{venture.title}</h4>
                     <p className="text-white/60 leading-relaxed">{venture.description}</p>
                     <Button 
+                      asChild
                       variant="outline" 
                       className={`rounded-full px-6 border-white/10 hover:border-current text-white/80 hover:text-white transition-all`}
                     >
-                      {venture.actionLabel} {venture.actionIcon}
+                      <a href={venture.href} target="_blank" rel="noopener noreferrer">
+                        {venture.actionLabel} {venture.actionIcon}
+                      </a>
                     </Button>
                   </div>
                 </div>
