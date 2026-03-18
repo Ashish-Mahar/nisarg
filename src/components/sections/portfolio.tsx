@@ -7,23 +7,23 @@ import { Button } from "@/components/ui/button";
 export function Portfolio() {
   const performanceReels = [
     {
+      title: "Latest Performance",
+      reelId: "DV5ZHuGAlU6",
+      tag: "New",
+      color: "text-accent",
+      glow: "neon-glow-cyan"
+    },
+    {
       title: "Hip Hop Freestyle",
       reelId: "DT26LfngWW3",
       tag: "Street Style",
-      color: "text-accent",
-      glow: "neon-glow-cyan"
+      color: "text-primary",
+      glow: "neon-glow-purple"
     },
     {
       title: "Bollywood Fusion",
       reelId: "DB9_L_PskV8",
       tag: "Commercial",
-      color: "text-primary",
-      glow: "neon-glow-purple"
-    },
-    {
-      title: "Choreography Reel",
-      reelId: "DB7M-7pv-7V",
-      tag: "Masterclass",
       color: "text-accent",
       glow: "neon-glow-cyan"
     }
@@ -36,7 +36,7 @@ export function Portfolio() {
       icon: <Shirt className="w-10 h-10 text-accent" />,
       actionLabel: "Follow on Instagram",
       actionIcon: <Instagram className="w-4 h-4 ml-2" />,
-      href: "https://www.instagram.com/kari_kraft_official?igsh=MzRlODBiNWFlZA==",
+      href: "https://www.instagram.com/kari_kraft_official?igsh=MWt2c3NsZ2Z2eGc0cw==",
       glow: "neon-glow-cyan",
       borderColor: "border-accent/20"
     },
@@ -83,10 +83,11 @@ export function Portfolio() {
                     src={`https://www.instagram.com/reel/${reel.reelId}/embed`}
                     className="absolute inset-0 w-full h-full border-none"
                     title={reel.title}
+                    allowFullScreen
                   ></iframe>
                 </div>
 
-                {/* Info Overlay (Visible on Hover/Bottom) */}
+                {/* Info Overlay */}
                 <div className="p-4 bg-card/80 backdrop-blur-sm border-t border-white/5">
                   <div className="flex justify-between items-center">
                     <span className={`text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded bg-white/5 border border-white/10 ${reel.color}`}>
@@ -100,8 +101,8 @@ export function Portfolio() {
               </div>
             ))}
           </div>
-          <p className="text-center text-white/30 text-xs italic pt-4">
-            Directly synced from Instagram
+          <p className="text-center text-white/30 text-[10px] italic pt-4">
+            * Direct Instagram integration
           </p>
         </div>
 
@@ -126,7 +127,7 @@ export function Portfolio() {
                     <Button 
                       asChild
                       variant="outline" 
-                      className={`rounded-full px-6 border-white/10 hover:border-current text-white/80 hover:text-white transition-all`}
+                      className="rounded-full px-6 border-white/10 hover:border-current text-white/80 hover:text-white transition-all"
                     >
                       <a href={venture.href} target="_blank" rel="noopener noreferrer">
                         {venture.actionLabel} {venture.actionIcon}

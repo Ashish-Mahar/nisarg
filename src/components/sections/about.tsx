@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function About() {
   const aboutImage = PlaceHolderImages.find((img) => img.id === "about-img");
-  const styles = ["Hip-hop", "Bollywood", "Contemporary", "Street Dance", "Jazz Funk"];
+  const styles = ["Hip-hop", "Bollywood", "Contemporary", "Street Dance"];
 
   return (
     <section id="about" className="py-24 px-6 bg-background relative overflow-hidden">
