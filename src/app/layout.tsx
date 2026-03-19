@@ -6,6 +6,9 @@ import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: 'Nisarg Sindhe | Professional Dancer & Choreographer',
   description: 'Portfolio of Nisarg Sindhe, a professional dancer specializing in Hip-hop, Bollywood, and Contemporary dance.',
+  verification: {
+    google: 'a-I0PCSsTGa0-nW_wgWVyfuNdZfuLwQUDXom5ePiwD8',
+  },
 };
 
 export default function RootLayout({
